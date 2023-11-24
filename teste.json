@@ -1,212 +1,1719 @@
+<?xml version="1.0"?>
+<OWASPZAPReport programName="ZAP" version="2.14.0" generated="Thu, 23 Nov 2023 16:29:38">
+
+                <site name="http://example.com" host="example.com" port="80" ssl="false">
+                        <alerts>
+
+                                        <alertitem>
+                                                <pluginid>10038</pluginid>
+                                                <alertRef>10038-1</alertRef>
+                                                <alert>Content Security Policy (CSP) Header Not Set</alert>
+                                                <name>Content Security Policy (CSP) Header Not Set</name>
+                                                <riskcode>2</riskcode>
+                                                <confidence>3</confidence>
+                                                <riskdesc>Medium (High)</riskdesc>
+                                                <confidencedesc>High</confidencedesc>
+                                                <desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page &#x2014; covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+                                                <instances>
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence></evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/robots.txt</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence></evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/sitemap.xml</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence></evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+                                                </instances>
+                                                <count>3</count>
+                                                <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+                                                <otherinfo></otherinfo>
+                                                <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;http://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html&lt;/p&gt;&lt;p&gt;http://www.html5rocks.com/en/tutorials/security/content-security-policy/&lt;/p&gt;&lt;p&gt;http://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;http://content-security-policy.com/&lt;/p&gt;</reference>
+                                                <cweid>693</cweid>
+                                                <wascid>15</wascid>
+                                                <sourceid>1</sourceid>
+                                        </alertitem>
+
+
+                                        <alertitem>
+                                                <pluginid>10020</pluginid>
+                                                <alertRef>10020-1</alertRef>
+                                                <alert>Missing Anti-clickjacking Header</alert>
+                                                <name>Missing Anti-clickjacking Header</name>
+                                                <riskcode>2</riskcode>
+                                                <confidence>2</confidence>
+                                                <riskdesc>Medium (Medium)</riskdesc>
+                                                <confidencedesc>Medium</confidencedesc>
+                                                <desc>&lt;p&gt;The response does not include either Content-Security-Policy with &apos;frame-ancestors&apos; directive or X-Frame-Options to protect against &apos;ClickJacking&apos; attacks.&lt;/p&gt;</desc>
+                                                <instances>
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param>x-frame-options</param>
+                                                                        <attack></attack>
+                                                                        <evidence></evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+                                                </instances>
+                                                <count>1</count>
+                                                <solution>&lt;p&gt;Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.&lt;/p&gt;&lt;p&gt;If you expect the page to be framed only by pages on your server (e.g. it&apos;s part of a FRAMESET) then you&apos;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy&apos;s &quot;frame-ancestors&quot; directive.&lt;/p&gt;</solution>
+                                                <otherinfo></otherinfo>
+                                                <reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options&lt;/p&gt;</reference>
+                                                <cweid>1021</cweid>
+                                                <wascid>15</wascid>
+                                                <sourceid>1</sourceid>
+                                        </alertitem>
+
+
+                                        <alertitem>
+                                                <pluginid>10036</pluginid>
+                                                <alertRef>10036</alertRef>
+                                                <alert>Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</alert>
+                                                <name>Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</name>
+                                                <riskcode>1</riskcode>
+                                                <confidence>3</confidence>
+                                                <riskdesc>Low (High)</riskdesc>
+                                                <confidencedesc>High</confidencedesc>
+                                                <desc>&lt;p&gt;The web/application server is leaking version information via the &quot;Server&quot; HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.&lt;/p&gt;</desc>
+                                                <instances>
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>ECS (mic/9A9D)</evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>ECS (mic/9B14)</evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/robots.txt</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>ECS (mic/9B13)</evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/sitemap.xml</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>ECS (mic/9A89)</evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+                                                </instances>
+                                                <count>4</count>
+                                                <solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to suppress the &quot;Server&quot; header or provide generic details.&lt;/p&gt;</solution>                                                <otherinfo></otherinfo>
+                                                <reference>&lt;p&gt;http://httpd.apache.org/docs/current/mod/core.html#servertokens&lt;/p&gt;&lt;p&gt;http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007&lt;/p&gt;&lt;p&gt;http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx&lt;/p&gt;&lt;p&gt;http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html&lt;/p&gt;</reference>
+                                                <cweid>200</cweid>
+                                                <wascid>13</wascid>
+                                                <sourceid>6</sourceid>
+                                        </alertitem>
+
+
+                                        <alertitem>
+                                                <pluginid>10021</pluginid>
+                                                <alertRef>10021</alertRef>
+                                                <alert>X-Content-Type-Options Header Missing</alert>
+                                                <name>X-Content-Type-Options Header Missing</name>
+                                                <riskcode>1</riskcode>
+                                                <confidence>2</confidence>
+                                                <riskdesc>Low (Medium)</riskdesc>
+                                                <confidencedesc>Medium</confidencedesc>
+                                                <desc>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;</desc>
+                                                <instances>
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param>x-content-type-options</param>
+                                                                        <attack></attack>
+                                                                        <evidence></evidence>
+                                                                        <otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+                                                                </instance>
+
+                                                </instances>
+                                                <count>1</count>
+                                                <solution>&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.&lt;/p&gt;</solution>
+                                                <otherinfo>&lt;p&gt;This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.&lt;/p&gt;&lt;p&gt;At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.&lt;/p&gt;</otherinfo>
+                                                <reference>&lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;&lt;p&gt;https://owasp.org/www-community/Security_Headers&lt;/p&gt;</reference>
+                                                <cweid>693</cweid>
+                                                <wascid>15</wascid>
+                                                <sourceid>1</sourceid>
+                                        </alertitem>
+
+
+                                        <alertitem>
+                                                <pluginid>10050</pluginid>
+                                                <alertRef>10050</alertRef>
+                                                <alert>Retrieved from Cache</alert>
+                                                <name>Retrieved from Cache</name>
+                                                <riskcode>0</riskcode>
+                                                <confidence>2</confidence>
+                                                <riskdesc>Informational (Medium)</riskdesc>
+                                                <confidencedesc>Medium</confidencedesc>
+                                                <desc>&lt;p&gt;The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. &lt;/p&gt;</desc>
+                                                <instances>
+
+                                                                <instance>
+                                                                        <uri>http://example.com/</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>HIT</evidence>
+                                                                        <otherinfo></otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/robots.txt</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>Age: 551125</evidence>
+                                                                        <otherinfo>The presence of the &apos;Age&apos; header indicates that that a HTTP/1.1 compliant caching server is in use.</otherinfo>
+                                                                </instance>
+
+
+                                                                <instance>
+                                                                        <uri>http://example.com/sitemap.xml</uri>
+                                                                        <method>GET</method>
+                                                                        <param></param>
+                                                                        <attack></attack>
+                                                                        <evidence>Age: 507045</evidence>
+                                                                        <otherinfo>The presence of the &apos;Age&apos; header indicates that that a HTTP/1.1 compliant caching server is in use.</otherinfo>
+                                                                </instance>
+
+                                                </instances>
+                                                <count>3</count>
+                                                <solution>&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.&lt;/p&gt;</solution>
+                                                <otherinfo></otherinfo>
+                                                <reference>&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;</reference>
+                                                <cweid>-1</cweid>
+                                                <wascid>-1</wascid>
+                                                <sourceid>1</sourceid>
+                                        </alertitem>
+
+                        </alerts>
+                </site>
+
+</OWASPZAPReport>
+root@grafana:/usr/bin# /usr/bin/owasp-zap -cmd -quickurl http://example.com/ -quickprogress -quickout /path/to/report.json
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Accessing URL
+Using traditional spider
+Active scanning
+[====================] 100%
+Attack complete
+Writing results to /path/to/report.json
+The directory of given '-quickout' file is not writable:
+/path/to
+root@grafana:/usr/bin# cat /path/to/report.json
+cat: /path/to/report.json: No such file or directory
+root@grafana:/usr/bin# cat /path/to/report.json
+cat: /path/to/report.json: No such file or directory
+root@grafana:/usr/bin# cat /path/to/report.json
+cat: /path/to/report.json: No such file or directory
+root@grafana:/usr/bin# cd /path/to/
+bash: cd: /path/to/: No such file or directory
+root@grafana:/usr/bin# cd /path^C
+root@grafana:/usr/bin# /usr/bin/owasp-zap -cmd -quickurl http://example.com/ -quickprogress -quickout /var/log/report.json
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Accessing URL
+Using traditional spider
+Active scanning
+[====================] 100%
+Attack complete
+Writing results to /var/log/report.json
+root@grafana:/usr/bin# cat /var/log/report.json
 {
-  "OWASPZAPReport": {
-    "site": {
-      "alerts": {
-        "alertitem": [
-          {
-            "pluginid": 10038,
-            "alertRef": "10038-1",
-            "alert": "Content Security Policy (CSP) Header Not Set",
-            "name": "Content Security Policy (CSP) Header Not Set",
-            "riskcode": 2,
-            "confidence": 3,
-            "riskdesc": "Medium (High)",
-            "confidencedesc": "High",
-            "desc": "&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page &#x2014; covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;",
-            "instances": {
-              "instance": [
+        "@programName": "ZAP",
+        "@version": "2.14.0",
+        "@generated": "Thu, 23 Nov 2023 16:52:28",
+        "site":[
                 {
-                  "uri": "http://example.com/",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/robots.txt",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/sitemap.xml",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "",
-                  "otherinfo": ""
+                        "@name": "http://example.com",
+                        "@host": "example.com",
+                        "@port": "80",
+                        "@ssl": "false",
+                        "alerts": [
+                                {
+                                        "pluginid": "10038",
+                                        "alertRef": "10038-1",
+                                        "alert": "Content Security Policy (CSP) Header Not Set",
+                                        "name": "Content Security Policy (CSP) Header Not Set",
+                                        "riskcode": "2",
+                                        "confidence": "3",
+                                        "riskdesc": "Medium (High)",
+                                        "desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10020",
+                                        "alertRef": "10020-1",
+                                        "alert": "Missing Anti-clickjacking Header",
+                                        "name": "Missing Anti-clickjacking Header",
+                                        "riskcode": "2",
+                                        "confidence": "2",
+                                        "riskdesc": "Medium (Medium)",
+                                        "desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-frame-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+                                        "cweid": "1021",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10036",
+                                        "alertRef": "10036",
+                                        "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "name": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "riskcode": "1",
+                                        "confidence": "3",
+                                        "riskdesc": "Low (High)",
+                                        "desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9AF5)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9B14)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9B13)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9A89)",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "4",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+                                        "cweid": "200",
+                                        "wascid": "13",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10021",
+                                        "alertRef": "10021",
+                                        "alert": "X-Content-Type-Options Header Missing",
+                                        "name": "X-Content-Type-Options Header Missing",
+                                        "riskcode": "1",
+                                        "confidence": "2",
+                                        "riskdesc": "Low (Medium)",
+                                        "desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-content-type-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+                                        "otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+                                        "reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10050",
+                                        "alertRef": "10050",
+                                        "alert": "Retrieved from Cache",
+                                        "name": "Retrieved from Cache",
+                                        "riskcode": "0",
+                                        "confidence": "2",
+                                        "riskdesc": "Informational (Medium)",
+                                        "desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. </p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "HIT",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 552495",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 508414",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+                                        "cweid": "-1",
+                                        "wascid": "-1",
+                                        "sourceid": "1"
+                                }
+                        ]
                 }
-              ]
-            },
-            "count": 3,
-            "solution": "&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;",
-            "otherinfo": "",
-            "reference": "&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;http://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html&lt;/p&gt;&lt;p&gt;http://www.html5rocks.com/en/tutorials/security/content-security-policy/&lt;/p&gt;&lt;p&gt;http://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;http://content-security-policy.com/&lt;/p&gt;",
-            "cweid": 693,
-            "wascid": 15,
-            "sourceid": 1
-          },
-          {
-            "pluginid": 10020,
-            "alertRef": "10020-1",
-            "alert": "Missing Anti-clickjacking Header",
-            "name": "Missing Anti-clickjacking Header",
-            "riskcode": 2,
-            "confidence": 2,
-            "riskdesc": "Medium (Medium)",
-            "confidencedesc": "Medium",
-            "desc": "&lt;p&gt;The response does not include either Content-Security-Policy with &apos;frame-ancestors&apos; directive or X-Frame-Options to protect against &apos;ClickJacking&apos; attacks.&lt;/p&gt;",
-            "instances": {
-              "instance": {
-                "uri": "http://example.com/",
-                "method": "GET",
-                "param": "x-frame-options",
-                "attack": "",
-                "evidence": "",
-                "otherinfo": ""
-              }
-            },
-            "count": 1,
-            "solution": "&lt;p&gt;Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.&lt;/p&gt;&lt;p&gt;If you expect the page to be framed only by pages on your server (e.g. it&apos;s part of a FRAMESET) then you&apos;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy&apos;s &quot;frame-ancestors&quot; directive.&lt;/p&gt;",
-            "otherinfo": "",
-            "reference": "&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options&lt;/p&gt;",
-            "cweid": 1021,
-            "wascid": 15,
-            "sourceid": 1
-          },
-          {
-            "pluginid": 10036,
-            "alertRef": 10036,
-            "alert": "Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field",
-            "name": "Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field",
-            "riskcode": 1,
-            "confidence": 3,
-            "riskdesc": "Low (High)",
-            "confidencedesc": "High",
-            "desc": "&lt;p&gt;The web/application server is leaking version information via the &quot;Server&quot; HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.&lt;/p&gt;",
-            "instances": {
-              "instance": [
-                {
-                  "uri": "http://example.com/",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "ECS (mic/9A9D)",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "ECS (mic/9B14)",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/robots.txt",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "ECS (mic/9B13)",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/sitemap.xml",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "ECS (mic/9A89)",
-                  "otherinfo": ""
-                }
-              ]
-            },
-            "count": 4,
-            "solution": "&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to suppress the &quot;Server&quot; header or provide generic details.&lt;/p&gt;",
-            "otherinfo": "",
-            "reference": "&lt;p&gt;http://httpd.apache.org/docs/current/mod/core.html#servertokens&lt;/p&gt;&lt;p&gt;http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007&lt;/p&gt;&lt;p&gt;http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx&lt;/p&gt;&lt;p&gt;http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html&lt;/p&gt;",
-            "cweid": 200,
-            "wascid": 13,
-            "sourceid": 6
-          },
-          {
-            "pluginid": 10021,
-            "alertRef": 10021,
-            "alert": "X-Content-Type-Options Header Missing",
-            "name": "X-Content-Type-Options Header Missing",
-            "riskcode": 1,
-            "confidence": 2,
-            "riskdesc": "Low (Medium)",
-            "confidencedesc": "Medium",
-            "desc": "&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;",
-            "instances": {
-              "instance": {
-                "uri": "http://example.com/",
-                "method": "GET",
-                "param": "x-content-type-options",
-                "attack": "",
-                "evidence": "",
-                "otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt &quot;High&quot; threshold this scan rule will not alert on client or server error responses."
-              }
-            },
-            "count": 1,
-            "solution": "&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.&lt;/p&gt;",
-            "otherinfo": "&lt;p&gt;This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.&lt;/p&gt;&lt;p&gt;At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.&lt;/p&gt;",
-            "reference": "&lt;p&gt;http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx&lt;/p&gt;&lt;p&gt;https://owasp.org/www-community/Security_Headers&lt;/p&gt;",
-            "cweid": 693,
-            "wascid": 15,
-            "sourceid": 1
-          },
-          {
-            "pluginid": 10050,
-            "alertRef": 10050,
-            "alert": "Retrieved from Cache",
-            "name": "Retrieved from Cache",
-            "riskcode": 0,
-            "confidence": 2,
-            "riskdesc": "Informational (Medium)",
-            "confidencedesc": "Medium",
-            "desc": "&lt;p&gt;The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. &lt;/p&gt;",
-            "instances": {
-              "instance": [
-                {
-                  "uri": "http://example.com/",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "HIT",
-                  "otherinfo": ""
-                },
-                {
-                  "uri": "http://example.com/robots.txt",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "Age: 551125",
-                  "otherinfo": "The presence of the &apos;Age&apos; header indicates that that a HTTP/1.1 compliant caching server is in use."
-                },
-                {
-                  "uri": "http://example.com/sitemap.xml",
-                  "method": "GET",
-                  "param": "",
-                  "attack": "",
-                  "evidence": "Age: 507045",
-                  "otherinfo": "The presence of the &apos;Age&apos; header indicates that that a HTTP/1.1 compliant caching server is in use."
-                }
-              ]
-            },
-            "count": 3,
-            "solution": "&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.&lt;/p&gt;",
-            "otherinfo": "",
-            "reference": "&lt;p&gt;https://tools.ietf.org/html/rfc7234&lt;/p&gt;&lt;p&gt;https://tools.ietf.org/html/rfc7231&lt;/p&gt;&lt;p&gt;http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)&lt;/p&gt;",
-            "cweid": -1,
-            "wascid": -1,
-            "sourceid": 1
-          }
         ]
-      }
-    }
-  }
+}
+root@grafana:/usr/bin# /usr/bin/owasp-zap -cmd -quickurl http://example.com/ -quickprogress -quickout /var/log/report.json^C
+root@grafana:/usr/bin# netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50872       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58730       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58706       TIME_WAIT
+tcp        0      0 grafana:55712           193.177.120.34.bc:https ESTABLISHED
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41090       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58662       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41128       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50870       TIME_WAIT
+tcp        0      0 grafana:60864           cdn-185-199-108-1:https ESTABLISHED
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33936       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58692       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41104       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50928       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58630       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58648       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33932       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33948       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:35416       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50850       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58700       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33924       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50866       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33534       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41084       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50912       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41110       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58654       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58714       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58686       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50842       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58744       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50862       TIME_WAIT
+tcp        0      0 grafana:37666           10.1.11.148:http        TIME_WAIT
+tcp        0   1368 grafana:ssh             10.2.1.128:63143        ESTABLISHED
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58672       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50858       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58722       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:41118       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50886       TIME_WAIT
+tcp        0      0 grafana:57802           10.1.11.148:http        TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50904       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50828       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:58634       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:33532       TIME_WAIT
+tcp        0      0 grafana:zabbix-agent    10.1.11.148:50898       TIME_WAIT
+tcp6       0      0 grafana:3000            10.2.1.135:62080        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:56496        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.128:53942        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:56514        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:56513        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.128:62676        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.128:61091        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.128:53943        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:56499        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.128:62302        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:56511        ESTABLISHED
+tcp6       0      0 grafana:3000            10.2.1.135:61876        ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ]         DGRAM                    22086    /run/user/1001/systemd/notify
+unix  3      [ ]         DGRAM      CONNECTED     18500    /run/systemd/notify
+unix  2      [ ]         DGRAM                    18517    /run/systemd/journal/syslog
+unix  12     [ ]         DGRAM      CONNECTED     18526    /run/systemd/journal/dev-log
+unix  9      [ ]         DGRAM      CONNECTED     18528    /run/systemd/journal/socket
+unix  3      [ ]         STREAM     CONNECTED     21234    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     20820
+unix  3      [ ]         STREAM     CONNECTED     22225
+unix  3      [ ]         DGRAM      CONNECTED     22087
+unix  2      [ ]         DGRAM                    21127
+unix  3      [ ]         STREAM     CONNECTED     19016    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     19884
+unix  3      [ ]         STREAM     CONNECTED     21240    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21233    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM      CONNECTED     18708
+unix  3      [ ]         STREAM     CONNECTED     342201   /tmp/plugin2587444508
+unix  3      [ ]         STREAM     CONNECTED     22091
+unix  3      [ ]         STREAM     CONNECTED     20893
+unix  3      [ ]         STREAM     CONNECTED     18854
+unix  3      [ ]         DGRAM      CONNECTED     19892
+unix  3      [ ]         STREAM     CONNECTED     21230    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21300
+unix  3      [ ]         STREAM     CONNECTED     20823    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     22035
+unix  3      [ ]         STREAM     CONNECTED     20917    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20500    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21231    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21373
+unix  3      [ ]         STREAM     CONNECTED     20785
+unix  3      [ ]         STREAM     CONNECTED     20824    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     22048
+unix  3      [ ]         STREAM     CONNECTED     21942
+unix  3      [ ]         DGRAM      CONNECTED     18951
+unix  3      [ ]         STREAM     CONNECTED     19859    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21368
+unix  3      [ ]         STREAM     CONNECTED     20784
+unix  3      [ ]         STREAM     CONNECTED     94896    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     306102
+unix  3      [ ]         STREAM     CONNECTED     21227
+unix  2      [ ]         DGRAM      CONNECTED     21225
+unix  2      [ ]         DGRAM      CONNECTED     21446
+unix  2      [ ]         DGRAM      CONNECTED     306128
+unix  3      [ ]         STREAM     CONNECTED     306103
+unix  3      [ ]         DGRAM      CONNECTED     20522
+unix  2      [ ]         DGRAM      CONNECTED     21143
+unix  3      [ ]         STREAM     CONNECTED     20943    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21301    /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     19890
+unix  2      [ ]         DGRAM      CONNECTED     21992
+unix  3      [ ]         STREAM     CONNECTED     20941    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     18946
+unix  3      [ ]         STREAM     CONNECTED     70660
+unix  3      [ ]         STREAM     CONNECTED     21930
+unix  3      [ ]         STREAM     CONNECTED     21081
+unix  3      [ ]         STREAM     CONNECTED     21239
+unix  3      [ ]         STREAM     CONNECTED     19854
+unix  3      [ ]         DGRAM      CONNECTED     18502
+unix  3      [ ]         STREAM     CONNECTED     20910
+unix  3      [ ]         STREAM     CONNECTED     94910    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21072
+unix  3      [ ]         STREAM     CONNECTED     21358
+unix  3      [ ]         STREAM     CONNECTED     21229    /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     18501
+unix  3      [ ]         STREAM     CONNECTED     21919    /tmp/plugin1352803820
+unix  3      [ ]         STREAM     CONNECTED     21228    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21309
+unix  3      [ ]         STREAM     CONNECTED     70652    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20927
+unix  3      [ ]         DGRAM      CONNECTED     20524
+unix  3      [ ]         STREAM     CONNECTED     20815
+unix  3      [ ]         STREAM     CONNECTED     21623    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21359    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21232    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     70661    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     22039    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21943    /tmp/plugin1024561376
+unix  3      [ ]         DGRAM      CONNECTED     20521
+unix  3      [ ]         DGRAM      CONNECTED     19891
+unix  3      [ ]         STREAM     CONNECTED     21308
+unix  3      [ ]         STREAM     CONNECTED     20959
+unix  3      [ ]         STREAM     CONNECTED     20816
+unix  2      [ ]         DGRAM      CONNECTED     306093
+unix  3      [ ]         STREAM     CONNECTED     18935
+unix  2      [ ]         DGRAM      CONNECTED     94897
+unix  3      [ ]         DGRAM      CONNECTED     19889
+unix  3      [ ]         STREAM     CONNECTED     21261
+unix  3      [ ]         STREAM     CONNECTED     20572    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     21226
+unix  3      [ ]         STREAM     CONNECTED     21181    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     22092    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     21137
+unix  3      [ ]         STREAM     CONNECTED     19026    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     94893
+unix  3      [ ]         STREAM     CONNECTED     20786
+unix  2      [ ]         DGRAM      CONNECTED     21323
+unix  3      [ ]         STREAM     CONNECTED     21622
+unix  3      [ ]         STREAM     CONNECTED     94909
+unix  2      [ ]         DGRAM      CONNECTED     20514
+unix  3      [ ]         STREAM     CONNECTED     20972    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     18632
+unix  3      [ ]         STREAM     CONNECTED     21369    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM      CONNECTED     22068
+unix  3      [ ]         STREAM     CONNECTED     20940
+unix  3      [ ]         STREAM     CONNECTED     20499
+unix  3      [ ]         STREAM     CONNECTED     21931    /tmp/plugin2481073602
+unix  2      [ ]         STREAM     CONNECTED     21903
+unix  3      [ ]         STREAM     CONNECTED     21374
+unix  2      [ ]         DGRAM      CONNECTED     20601
+unix  3      [ ]         STREAM     CONNECTED     70647
+unix  3      [ ]         STREAM     CONNECTED     20897    /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     18950
+unix  3      [ ]         STREAM     CONNECTED     22226
+unix  3      [ ]         STREAM     CONNECTED     21918
+unix  3      [ ]         STREAM     CONNECTED     21180
+unix  3      [ ]         STREAM     CONNECTED     21266    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     20571
+unix  3      [ ]         DGRAM      CONNECTED     22088
+unix  3      [ ]         DGRAM      CONNECTED     20523
+unix  3      [ ]         STREAM     CONNECTED     342200
+unix  2      [ ]         DGRAM      CONNECTED     21051
+unix  2      [ ]         DGRAM      CONNECTED     20853
+root@grafana:/usr/bin# /usr/bin/owasp-zap -help
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Usage:
+        zap.sh [Options]
+Core options:
+        -version                 Reports the ZAP version
+        -cmd                     Run inline (exits when command line options complete)
+        -daemon                  Starts ZAP in daemon mode, i.e. without a UI
+        -config <kvpair>         Overrides the specified key=value pair in the configuration file
+        -configfile <path>       Overrides the key=value pairs with those in the specified properties file
+        -dir <dir>               Uses the specified directory instead of the default one
+        -installdir <dir>        Overrides the code that detects where ZAP has been installed with the specified directory
+        -h                       Shows all of the command line options available, including those added by add-ons
+        -help                    The same as -h
+        -newsession <path>       Creates a new session at the given location
+        -session <path>          Opens the given session after starting ZAP
+        -lowmem                  Use the database instead of memory as much as possible - this is still experimental
+        -experimentaldb          Use the experimental generic database code, which is not surprisingly also still experimental
+        -nostdout                Disables the default logging through standard output
+        -sbomzip <path>          Creates a zip file containing all of the available SBOMs
+        -suppinfo                Reports support info to the command line and exits
+        -silent                  Ensures ZAP does not make any unsolicited requests, including check for updates
+Add-on options:
+        -quickurl <target url>   The URL to attack, e.g. http://www.example.com
+        -quickout <filename>     The file to write the HTML/JSON/MD/XML results to (based on the file extension)
+        -quickprogress:          Display progress bars while scanning
+        -zapit <target url>      The URL to perform a quick 'reconnaissance' scan on, e.g. http://www.example.com The -cmd option must be specified
+        -script <script>         Run the specified script from commandline or load in GUI
+        -openapifile <path>      Imports an OpenAPI definition from the specified file name
+        -openapiurl <url>        Imports an OpenAPI definition from the specified URL
+        -openapitargeturl <url>  The Target URL, to override the server URL present in the OpenAPI definition. Refer to the help for supported format.
+        -autorun <filename>      Run the automation jobs specified in the file
+        -autogenmin <filename>   Generate template automation file with the key parameters
+        -autogenmax <filename>   Generate template automation file with all parameters
+        -autogenconf <filename>  Generate template automation file using the current configuration
+        -certload <path>         Loads the Root CA certificate from the specified file name
+        -certpubdump <path>      Dumps the Root CA public certificate into the specified file name, this is suitable for importing into browsers
+        -certfulldump <path>     Dumps the Root CA full certificate (including the private key) into the specified file name, this is suitable for importing into ZAP
+        -host <host>             Overrides the host of the main proxy, specified in the configuration file
+        -port <port>             Overrides the port of the main proxy, specified in the configuration file
+        -postmanfile <path>          Imports a Postman collection from the specified file name.
+        -postmanurl <url>            Imports a Postman collection from the specified URL.
+        -postmanendpointurl <url>    The endpoint URL, to override the base URLs present in the Postman collection.
+        -hud                     Launches a browser configured to proxy through ZAP with the HUD enabled, for use in daemon mode
+        -hudurl <url>            Launches a browser as per the -hud option with the specified URL
+        -hudbrowser <browser>    Launches a browser as per the -hud option with the specified browser, supported options: Chrome, Firefox by default Firefox
+        -notel                   Turns off telemetry calls
+        -graphqlfile <path>       Imports a GraphQL Schema from a File
+        -graphqlurl <url>         Imports a GraphQL Schema from a URL
+        -graphqlendurl <url>      Sets the Endpoint URL
+        -addoninstall <addOnId>   Installs the add-on with specified ID from the ZAP Marketplace
+        -addoninstallall          Install all available add-ons from the ZAP Marketplace
+        -addonuninstall <addOnId> Uninstalls the Add-on with specified ID
+        -addonupdate              Update all changed add-ons from the ZAP Marketplace
+        -addonlist                List all of the installed add-ons
+
+root@grafana:/usr/bin# /usr/bin/owasp-zap -config
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Failed due to invalid parameters: [-config]
+Index 1 out of bounds for length 1
+Use '-h' for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap -h -config
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Failed due to invalid parameters: [-h, -config]
+Index 2 out of bounds for length 2
+Use '-h' for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap -h
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Usage:
+        zap.sh [Options]
+Core options:
+        -version                 Reports the ZAP version
+        -cmd                     Run inline (exits when command line options complete)
+        -daemon                  Starts ZAP in daemon mode, i.e. without a UI
+        -config <kvpair>         Overrides the specified key=value pair in the configuration file
+        -configfile <path>       Overrides the key=value pairs with those in the specified properties file
+        -dir <dir>               Uses the specified directory instead of the default one
+        -installdir <dir>        Overrides the code that detects where ZAP has been installed with the specified directory
+        -h                       Shows all of the command line options available, including those added by add-ons
+        -help                    The same as -h
+        -newsession <path>       Creates a new session at the given location
+        -session <path>          Opens the given session after starting ZAP
+        -lowmem                  Use the database instead of memory as much as possible - this is still experimental
+        -experimentaldb          Use the experimental generic database code, which is not surprisingly also still experimental
+        -nostdout                Disables the default logging through standard output
+        -sbomzip <path>          Creates a zip file containing all of the available SBOMs
+        -suppinfo                Reports support info to the command line and exits
+        -silent                  Ensures ZAP does not make any unsolicited requests, including check for updates
+Add-on options:
+        -quickurl <target url>   The URL to attack, e.g. http://www.example.com
+        -quickout <filename>     The file to write the HTML/JSON/MD/XML results to (based on the file extension)
+        -quickprogress:          Display progress bars while scanning
+        -zapit <target url>      The URL to perform a quick 'reconnaissance' scan on, e.g. http://www.example.com The -cmd option must be specified
+        -script <script>         Run the specified script from commandline or load in GUI
+        -openapifile <path>      Imports an OpenAPI definition from the specified file name
+        -openapiurl <url>        Imports an OpenAPI definition from the specified URL
+        -openapitargeturl <url>  The Target URL, to override the server URL present in the OpenAPI definition. Refer to the help for supported format.
+        -autorun <filename>      Run the automation jobs specified in the file
+        -autogenmin <filename>   Generate template automation file with the key parameters
+        -autogenmax <filename>   Generate template automation file with all parameters
+        -autogenconf <filename>  Generate template automation file using the current configuration
+        -certload <path>         Loads the Root CA certificate from the specified file name
+        -certpubdump <path>      Dumps the Root CA public certificate into the specified file name, this is suitable for importing into browsers
+        -certfulldump <path>     Dumps the Root CA full certificate (including the private key) into the specified file name, this is suitable for importing into ZAP
+        -host <host>             Overrides the host of the main proxy, specified in the configuration file
+        -port <port>             Overrides the port of the main proxy, specified in the configuration file
+        -postmanfile <path>          Imports a Postman collection from the specified file name.
+        -postmanurl <url>            Imports a Postman collection from the specified URL.
+        -postmanendpointurl <url>    The endpoint URL, to override the base URLs present in the Postman collection.
+        -hud                     Launches a browser configured to proxy through ZAP with the HUD enabled, for use in daemon mode
+        -hudurl <url>            Launches a browser as per the -hud option with the specified URL
+        -hudbrowser <browser>    Launches a browser as per the -hud option with the specified browser, supported options: Chrome, Firefox by default Firefox
+        -notel                   Turns off telemetry calls
+        -graphqlfile <path>       Imports a GraphQL Schema from a File
+        -graphqlurl <url>         Imports a GraphQL Schema from a URL
+        -graphqlendurl <url>      Sets the Endpoint URL
+        -addoninstall <addOnId>   Installs the add-on with specified ID from the ZAP Marketplace
+        -addoninstallall          Install all available add-ons from the ZAP Marketplace
+        -addonuninstall <addOnId> Uninstalls the Add-on with specified ID
+        -addonupdate              Update all changed add-ons from the ZAP Marketplace
+        -addonlist                List all of the installed add-ons
+
+root@grafana:/usr/bin# /usr/bin/owasp-zap -h -configfile
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Failed due to invalid parameters: [-h, -configfile]
+Index 2 out of bounds for length 2
+Use '-h' for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap -host localhost -port 8080
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+3131 [main] INFO  org.zaproxy.zap.GuiBootstrap - ZAP 2.14.0 started 23/11/2023, 19:23:20 with home /root/.ZAP/
+3141 [main] FATAL org.zaproxy.zap.GuiBootstrap - ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap  -addoninstallall
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+2580 [main] INFO  org.zaproxy.zap.GuiBootstrap - ZAP 2.14.0 started 23/11/2023, 19:28:26 with home /root/.ZAP/
+2593 [main] FATAL org.zaproxy.zap.GuiBootstrap - ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap  -daemon
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+2613 [main] INFO  org.zaproxy.zap.DaemonBootstrap - ZAP 2.14.0 started 23/11/2023, 19:29:08 with home /root/.ZAP/
+6104 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Installed add-ons: [[id=alertFilters, version=18.0.0], [id=ascanrules, version=58.0.0], [id=authhelper, version=0.10.0], [id=automation, version=0.33.0], [id=bruteforce, version=15.0.0], [id=callhome, version=0.8.0], [id=commonlib, version=1.18.0], [id=database, version=0.3.0], [id=diff, version=14.0.0], [id=directorylistv1, version=7.0.0], [id=domxss, version=18.0.0], [id=encoder, version=1.4.0], [id=exim, version=0.7.0], [id=formhandler, version=6.5.0], [id=fuzz, version=13.12.0], [id=gettingStarted, version=16.0.0], [id=graaljs, version=0.5.0], [id=graphql, version=0.20.0], [id=help, version=17.0.0], [id=hud, version=0.18.0], [id=invoke, version=14.0.0], [id=network, version=0.12.0], [id=oast, version=0.17.0], [id=onlineMenu, version=12.0.0], [id=openapi, version=37.0.0], [id=postman, version=0.2.0], [id=pscanrules, version=52.0.0], [id=quickstart, version=43.0.0], [id=replacer, version=15.0.0], [id=reports, version=0.26.0], [id=requester, version=7.4.0], [id=retest, version=0.8.0], [id=retire, version=0.26.0], [id=reveal, version=7.0.0], [id=scripts, version=42.0.0], [id=selenium, version=15.15.0], [id=soap, version=20.0.0], [id=spider, version=0.7.0], [id=spiderAjax, version=23.17.0], [id=tips, version=12.0.0], [id=webdriverlinux, version=64.0.0], [id=websocket, version=30.0.0], [id=zest, version=42.0.0]]
+6112 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Loading extensions
+6290 [ZAP-daemon] WARN  org.zaproxy.zap.extension.script.ExtensionScript - No default JavaScript/ECMAScript engine found, some scripts might no longer work.
+7309 [ZAP-daemon] INFO  org.zaproxy.addon.network.internal.TlsUtils - Using supported SSL/TLS protocols: [TLSv1.2, TLSv1.3]
+7969 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Extensions loaded
+12342 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Auto-update Extension - Allows ZAP to check for updates
+12359 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Options Extension - Options Extension
+12364 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Edit Menu Extension - Edit Menu Extension
+12364 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing API Extension - Provides a rest based API for controlling and accessing ZAP
+12416 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing History Extension - History Extension
+12417 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionReveal - Show hidden fields and enable disabled fields
+12430 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Search Extension - Search messages for strings and regular expressions
+12433 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Breakpoint Extension - Allows you to intercept and modify requests and responses
+12440 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Extension - Passive scanner
+12718 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Script Passive Scan Rules
+12724 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Stats Passive Scan Rule
+12725 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: WSDL File Detection
+12725 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Vulnerable JS Library (Powered by Retire.js)
+12725 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Authentication Request Identified
+12726 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session Management Response Identified
+12726 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Verification Request Identified
+12727 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Anti-clickjacking Header
+12728 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Application Error Disclosure
+12732 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+12732 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Re-examine Cache-control Directives
+12733 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Charset Mismatch
+12733 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+12733 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: CSP
+12734 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content-Type Header Missing
+12736 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie No HttpOnly Flag
+12737 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Loosely Scoped Cookie
+12738 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie without SameSite Attribute
+12738 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Without Secure Flag
+12744 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain Misconfiguration
+12744 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+12744 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Absence of Anti-CSRF Tokens
+12745 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Directory Browsing
+12745 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Hash Disclosure
+12746 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+12747 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Private IP Disclosure
+12747 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session ID in URL Rewrite
+12747 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Debug Error Messages
+12748 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+12752 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+12752 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Suspicious Comments
+12752 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Weak Authentication Method
+12753 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+12753 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+12753 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Insecure JSF ViewState
+12754 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Reverse Tabnabbing
+12755 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Secure Pages Include Mixed Content
+12759 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Modern Web Application
+12760 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: PII Disclosure12760 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Retrieved from Cache
+12761 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP Server Response Header
+12762 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Strict-Transport-Security Header
+12768 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Timestamp Disclosure
+12768 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable Charset
+12768 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Poisoning
+12769 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+12770 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable JavaScript Event (XSS)
+12772 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Open Redirect
+12776 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Username Hash Found
+12778 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Viewstate
+12782 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-AspNet-Version Response Header
+12782 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Backend-Server Header Information Leak
+12783 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+12783 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Content-Type-Options Header Missing
+12788 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Debug-Token Information Leak
+12788 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+12824 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alerts Extension - Allows you to view and manage alerts
+12831 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Extension - Active scanner, heavily based on the original Paros active scanner, but with additional tests added
+12858 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Standard Menus Extension - A set of common popup menus for miscellaneous tasks
+12864 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionBruteForce - Forced browsing of files and directories using code from the OWASP DirBuster tool
+12866 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Compare Extension - Compares 2 sessions and generates an HTML file showing the differences
+12867 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionInvoke - Invoke external applications passing context related information such as URLs and parameters
+12867 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Anti-CSRF Extension - Handles anti cross site request forgery (CSRF) tokens
+12880 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Extension - Authentication Extension
+12909 [ZAP-daemon] INFO  org.zaproxy.zap.extension.authentication.ExtensionAuthentication - Loaded authentication method types: [Form-based Authentication, HTTP/NTLM Authentication, Manual Authentication, Script-based Authentication, JSON-based Authentication]
+12919 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Log4j Extension - Logs errors to the Output tab in development mode only
+12920 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Users Extension - Users Extension12932 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Parameters Extension - Summarise and analyse FORM and URL parameters as well as cookies
+12933 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Script Extension - Script integration
+12958 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionScripts - Scripting console, supports all JSR 223 scripting languages
+13030 [ZAP-daemon] WARN  org.parosproxy.paros.common.AbstractParam - Failed to create enum for 'script.console.defaultScriptChangedBehaviour' using 'Ask Each Time'. Valid values: [Keep Script, Replace Script, Ask Each Time]
+13030 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Forced User Extension - Forced User Extension
+13031 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Sessions Extension - Extension handling HTTP sessions
+13040 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionZest - Zest is a specialized scripting language, originally, from Mozilla specifically designed to be used in security tools
+13439 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDiff - ExtensionDiff
+13442 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Post Table View Extension - HTTP Panel Post Table View Extension
+13442 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Encoder Addon - Adds support for scriptable encoders to ZAP.
+13443 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Session Management Extension - Session Management Extension
+13446 [ZAP-daemon] INFO  org.zaproxy.zap.extension.sessions.ExtensionSessionManagement - Loaded session management method types: [Cookie-based Session Management, HTTP Authentication Session Management, Script-based Session Management]
+13453 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Form Table View Extension - HTTP Panel Form Table View Extension
+13456 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSockets Support - Capture messages from WebSockets with the ability to set breakpoints.
+13494 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP/WSDL Support - Allows you to import a WSDL file containing operations which ZAP will access, adding them to the Sites tree.
+13495 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Core UI Extension - Core UI related functionality.
+13500 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authorization Extension - Authorization Extension
+13501 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Requester - Allows to manually edit and send messages.
+13506 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider - AJAX Spider, uses Crawljax
+13524 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebDriver Provider - Provides WebDrivers to control several browsers using Selenium and includes HtmlUnit browser.
+13550 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Refresh Sites Tree Extension - Adds menu item to refresh the Sites tree
+13556 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Help Extension - ZAP User Guide
+13557 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Call Home - Handles all of the calls to ZAP services
+13558 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Network Extension - Provides core networking capabilities.
+15088 [ZAP-daemon] INFO  org.zaproxy.addon.network.ConnectionOptions - Unsafe SSL/TLS renegotiation disabled.
+15096 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Extension Configuration Extension - Allows you to configure which extensions are loaded when ZAP starts
+15103 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Combined HTTP Panels Extension - Combined HTTP Panels Extension
+15104 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Hex View Extension - HTTP Panel Hex View Extension
+15106 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Image View Extension - HTTP Panel Image View Extension
+15106 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Query Table View Extension - HTTP Panel Query Table View Extension
+15108 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Syntax Highlighter View Extension - HTTP Panel Syntax Highlighter View Extension
+15108 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Keyboard Configuration Extension - Adds support for configurable keyboard shortcuts for all of the ZAP menus.
+15108 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scanner Rule Configuration Extension - Active and passive rule configuration
+15115 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Statistics Extension - Statistics15125 [ZAP-daemon] INFO  org.zaproxy.zap.extension.stats.ExtensionStats - Start recording in memory stats
+15126 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Custom Pages Extension - Custom Pages Definition
+15128 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Ajax Spider Automation - Ajax Spider Automation Framework Integration
+15149 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionAlertFilters - Context alert rules filter
+15158 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alert Filters Automation - Alert Filters Automation Framework Integration
+15170 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Advance Fuzzer - Provides the foundation for concrete message types (for example, HTTP, WebSockets) expose fuzzer implementations.
+15174 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Fuzzer - Allows to fuzz HTTP messages.
+15180 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scripts Automation Framework Integration - Scripts Automation
+15212 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUD - Heads Up Display
+15719 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUDlaunch - ExtensionHUDlaunch
+15721 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Retest - Facilitates the verification of presence/absence of certain alerts.
+15728 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generator - Templated and themed report generation functionality
+15731 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generation Automation Integration - Report Generation Automation Integration
+15736 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Out-of-band Application Security Testing - Adds Out-of-band Application Security Testing functionality.
+15749 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OAST Scripts - Adds OAST scripts.15749 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Automation - SOAP Automation Framework Integration
+15751 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Spider - SOAP Spider Integration
+15758 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Match and Replace - Easy way to replace strings in requests and responses
+15761 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Replacer Automation - Replacer Automation Framework Integration
+15770 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionTipsAndTricks - Tips and Tricks
+15771 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGraphQl - Allows you to inspect and attack GraphQL endpoints.
+15780 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Automation - GraphQL Automation Framework Integration
+15782 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Spider - GraphQL Spider Integration
+15783 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Extension - Spider used for automatically finding URIs on a site.
+15829 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Automation - Spider Automation Integration
+15839 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionFormHandler - This extension allows a user to change the default values used for generated content (e.g. spiders, importers).
+15845 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Fuzzer - Allows to fuzz WebSocket messages.
+15845 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Message Editor - Provides the WebSocket Message Editor dialogues.
+15846 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Helper - Authentication Helper
+15853 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider Browser Based Authentication Support - Enables browser based authentication when performing an authenticated AJAX Spider scan.
+15854 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start panel  - Adds the Quick Start panel for scanning and exploring applications
+15858 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Ajax Spider integration - Add the option to use the Ajax Spider in the Quick Start scan
+15861 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start HUD Integration - HUD integration for the quick start panel
+15862 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Browser Launcher - Launch browsers preset proxying through ZAP
+15863 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Spider Integration - Adds the option to use the traditional Spider in the Quick Start scan.
+15864 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library - A library of shared functionality
+15865 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library Form Handler - Common Library Form Handler Integration
+15872 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionOnlineMenu - The Online menu links
+15872 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Rules - Release status active scan rules
+15873 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Rules - Release status passive scan rules
+15873 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDomXSS - DOM XSS Active Scan Rule
+16017 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Import - Allows you to spider and import OpenAPI (Swagger) definitions
+16019 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Automation - OpenAPI Automation Framework Integration
+16025 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Spider - OpenAPI Spider Integration
+16035 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGettingStarted - The ZAP Getting Started Guide
+16037 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraalVM JavaScript Engine Extension - Provides the GraalVM JavaScript engine for ZAP scripting.
+16537 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export - Import and Export functionality supporting multiple formats.
+16544 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export Automation - Import/Export Automation Framework Integration
+16546 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Automation Framework - Provides functionality to simplify using ZAP in an automated manner
+16549 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Postman Import - Allows you to spider and import Postman collections
+18642 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.20.0 by Redgate
+18648 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+18648 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter -
+18743 [ZAP-daemon] INFO  org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:hsqldb:file:/root/.ZAP/db/permanent (HSQL Database Engine 2.7)
+18780 [ZAP-daemon] WARN  org.flywaydb.core.internal.database.base.Database - Flyway upgrade recommended: HSQLDB 2.7 is newer than this version of Flyway and support has not been tested. The latest supported version of HSQLDB is 2.6.
+18942 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.119s)
+19007 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "PUBLIC": 1
+19026 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema "PUBLIC" is up to date. No migration necessary.
+19326 [ZAP-daemon] INFO  org.zaproxy.addon.oast.services.callback.CallbackService - Started callback service on 0.0.0.0:42101
+22868 [ZAP-daemon] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - There is/are 13 newer addons
+36786 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Reading supported SSL/TLS protocols...
+36786 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Using a SSLEngine...
+36797 [ZAP-DownloadInstaller] INFO  org.parosproxy.paros.network.SSLConnector - Done reading supported SSL/TLS protocols: [SSLv2Hello, SSLv3, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3]
+40868 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon network v0.13.0
+41107 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.network.internal.TlsUtils - Using supported SSL/TLS protocols: [TLSv1.2, TLSv1.3]
+42053 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.network.ConnectionOptions - Unsafe SSL/TLS renegotiation disabled.42388 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.network.ExtensionNetwork - ZAP is now listening on localhost:8080
+42744 [ZAP-DownloadInstaller] INFO  org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:hsqldb:file:/root/.ZAP/db/permanent (HSQL Database Engine 2.7)
+42747 [ZAP-DownloadInstaller] WARN  org.flywaydb.core.internal.database.base.Database - Flyway upgrade recommended: HSQLDB 2.7 is newer than this version of Flyway and support has not been tested. The latest supported version of HSQLDB is 2.6.
+42759 [ZAP-DownloadInstaller] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.002s)
+42771 [ZAP-DownloadInstaller] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "PUBLIC": 142776 [ZAP-DownloadInstaller] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema "PUBLIC" is up to date. No migration necessary.
+42782 [ZAP-DownloadInstaller] INFO  org.zaproxy.addon.oast.services.callback.CallbackService - Started callback service on 0.0.0.0:46045
+44323 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Authentication Request Identified
+44327 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session Management Response Identified
+44327 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Verification Request Identified
+44597 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon network v0.13.0
+44634 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon webdriverlinux v65.0.0
+46294 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon webdriverlinux v65.0.0
+46309 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon exim v0.8.0
+46312 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon exim v0.8.0
+46334 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon graphql v0.21.0
+46381 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon graphql v0.21.0
+46479 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon selenium v15.16.0
+47264 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Authentication Request Identified
+47264 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session Management Response Identified
+47264 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Verification Request Identified
+47284 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon selenium v15.16.0
+47313 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon spiderAjax v23.18.0
+47386 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon spiderAjax v23.18.0
+47418 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon automation v0.34.0
+47570 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon automation v0.34.0
+47648 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon scripts v43.0.0
+47688 [ZAP-DownloadInstaller] WARN  org.parosproxy.paros.common.AbstractParam - Failed to create enum for 'script.console.defaultScriptChangedBehaviour' using 'Ask Each Time'. Valid values: [Keep Script, Replace Script, Ask Each Time]
+55144 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon scripts v43.0.0
+55184 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon alertFilters v19.0.0
+55255 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon alertFilters v19.0.0
+56015 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon callhome v0.10.0
+56217 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon callhome v0.10.0
+56277 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon openapi v38.0.0
+56468 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon openapi v38.0.0
+57028 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon commonlib v1.19.0
+57770 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: WSDL File Detection
+57796 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Vulnerable JS Library (Powered by Retire.js)
+57893 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Authentication Request Identified
+57897 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session Management Response Identified
+57897 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Verification Request Identified
+58783 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Anti-clickjacking Header
+58784 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Application Error Disclosure
+58784 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+58784 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Re-examine Cache-control Directives
+58785 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Charset Mismatch
+58785 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+58785 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: CSP58786 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content-Type Header Missing
+58786 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie No HttpOnly Flag
+58786 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Loosely Scoped Cookie
+58792 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie without SameSite Attribute
+58792 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Without Secure Flag
+58792 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain Misconfiguration
+58793 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+58793 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Absence of Anti-CSRF Tokens
+58793 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Directory Browsing
+58794 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Hash Disclosure
+58794 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+58796 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Private IP Disclosure
+58796 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session ID in URL Rewrite
+58797 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Debug Error Messages
+58797 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+58797 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+58799 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Suspicious Comments
+58800 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Weak Authentication Method
+58800 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+58800 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+58801 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Insecure JSF ViewState
+58801 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Reverse Tabnabbing
+58802 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Secure Pages Include Mixed Content
+58802 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Modern Web Application
+58802 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: PII Disclosure
+58807 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Retrieved from Cache
+58810 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP Server Response Header
+58811 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Strict-Transport-Security Header
+58811 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Timestamp Disclosure
+58811 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable Charset
+58812 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Poisoning
+58812 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+58812 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable JavaScript Event (XSS)
+58813 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Open Redirect
+58813 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Username Hash Found
+58813 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Viewstate
+58814 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-AspNet-Version Response Header
+58815 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Backend-Server Header Information Leak
+58816 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+58816 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Content-Type-Options Header Missing
+58816 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Debug-Token Information Leak
+58817 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+59265 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon commonlib v1.19.0
+59281 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Installing new addon retire v0.27.0
+59290 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Vulnerable JS Library (Powered by Retire.js)
+59295 [ZAP-DownloadInstaller] INFO  org.zaproxy.zap.extension.autoupdate.ExtensionAutoUpdate - Finished installing new addon retire v0.27.0
+59320 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/callhome-release-0.10.0.zap
+59320 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/exim-beta-0.8.0.zap
+59321 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/alertFilters-release-19.zap
+59321 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/scripts-release-43.zap
+59321 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/retire-release-0.27.0.zap
+59321 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/automation-beta-0.34.0.zap
+59321 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/graphql-alpha-0.21.0.zap
+59322 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/spiderAjax-release-23.18.0.zap
+59322 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/commonlib-release-1.19.0.zap
+59322 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/openapi-beta-38.zap
+59322 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/webdriverlinux-release-65.zap
+59323 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/network-beta-0.13.0.zap
+59323 [ZAP-daemon] INFO  org.parosproxy.paros.CommandLine - Add-on downloaded to: /root/.ZAP/plugin/selenium-release-15.16.0.zap
+59335 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - ZAP is now listening on localhost:8080
+^Croot@grafana:/usr/bin# cat /var/log/report.json
+{
+        "@programName": "ZAP",
+        "@version": "2.14.0",
+        "@generated": "Thu, 23 Nov 2023 16:52:28",
+        "site":[
+                {
+                        "@name": "http://example.com",
+                        "@host": "example.com",
+                        "@port": "80",
+                        "@ssl": "false",
+                        "alerts": [
+                                {
+                                        "pluginid": "10038",
+                                        "alertRef": "10038-1",
+                                        "alert": "Content Security Policy (CSP) Header Not Set",
+                                        "name": "Content Security Policy (CSP) Header Not Set",
+                                        "riskcode": "2",
+                                        "confidence": "3",
+                                        "riskdesc": "Medium (High)",
+                                        "desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10020",
+                                        "alertRef": "10020-1",
+                                        "alert": "Missing Anti-clickjacking Header",
+                                        "name": "Missing Anti-clickjacking Header",
+                                        "riskcode": "2",
+                                        "confidence": "2",
+                                        "riskdesc": "Medium (Medium)",
+                                        "desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-frame-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+                                        "cweid": "1021",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10036",
+                                        "alertRef": "10036",
+                                        "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "name": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "riskcode": "1",
+                                        "confidence": "3",
+                                        "riskdesc": "Low (High)",
+                                        "desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9AF5)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9B14)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9B13)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9A89)",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "4",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+                                        "cweid": "200",
+                                        "wascid": "13",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10021",
+                                        "alertRef": "10021",
+                                        "alert": "X-Content-Type-Options Header Missing",
+                                        "name": "X-Content-Type-Options Header Missing",
+                                        "riskcode": "1",
+                                        "confidence": "2",
+                                        "riskdesc": "Low (Medium)",
+                                        "desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-content-type-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+                                        "otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+                                        "reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10050",
+                                        "alertRef": "10050",
+                                        "alert": "Retrieved from Cache",
+                                        "name": "Retrieved from Cache",
+                                        "riskcode": "0",
+                                        "confidence": "2",
+                                        "riskdesc": "Informational (Medium)",
+                                        "desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. </p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "HIT",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 552495",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 508414",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+                                        "cweid": "-1",
+                                        "wascid": "-1",
+                                        "sourceid": "1"
+                                }
+                        ]
+                }
+        ]
+}
+root@grafana:/usr/bin# ^C
+root@grafana:/usr/bin# nano /var/log/report.json
+root@grafana:/usr/bin# /usr/bin/owasp-zap -config api.addrs.addr.name=10.2.1.128
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+3218 [main] INFO  org.zaproxy.zap.GuiBootstrap - ZAP 2.14.0 started 23/11/2023, 20:05:49 with home /root/.ZAP/
+3245 [main] FATAL org.zaproxy.zap.GuiBootstrap - ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+ZAP GUI is not supported on a headless environment.
+Run ZAP inline or in daemon mode, use -help command line argument for more details.
+root@grafana:/usr/bin# /usr/bin/owasp-zap  -daemon
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+2670 [main] INFO  org.zaproxy.zap.DaemonBootstrap - ZAP 2.14.0 started 23/11/2023, 20:06:38 with home /root/.ZAP/
+6457 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Installed add-ons: [[id=alertFilters, version=19.0.0], [id=ascanrules, version=58.0.0], [id=authhelper, version=0.10.0], [id=automation, version=0.34.0], [id=bruteforce, version=15.0.0], [id=callhome, version=0.10.0], [id=commonlib, version=1.19.0], [id=database, version=0.3.0], [id=diff, version=14.0.0], [id=directorylistv1, version=7.0.0], [id=domxss, version=18.0.0], [id=encoder, version=1.4.0], [id=exim, version=0.8.0], [id=formhandler, version=6.5.0], [id=fuzz, version=13.12.0], [id=gettingStarted, version=16.0.0], [id=graaljs, version=0.5.0], [id=graphql, version=0.21.0], [id=help, version=17.0.0], [id=hud, version=0.18.0], [id=invoke, version=14.0.0], [id=network, version=0.13.0], [id=oast, version=0.17.0], [id=onlineMenu, version=12.0.0], [id=openapi, version=38.0.0], [id=postman, version=0.2.0], [id=pscanrules, version=52.0.0], [id=quickstart, version=43.0.0], [id=replacer, version=15.0.0], [id=reports, version=0.26.0], [id=requester, version=7.4.0], [id=retest, version=0.8.0], [id=retire, version=0.27.0], [id=reveal, version=7.0.0], [id=scripts, version=43.0.0], [id=selenium, version=15.16.0], [id=soap, version=20.0.0], [id=spider, version=0.7.0], [id=spiderAjax, version=23.18.0], [id=tips, version=12.0.0], [id=webdriverlinux, version=65.0.0], [id=websocket, version=30.0.0], [id=zest, version=42.0.0]]
+6464 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Loading extensions
+7022 [ZAP-daemon] WARN  org.zaproxy.zap.extension.script.ExtensionScript - No default JavaScript/ECMAScript engine found, some scripts might no longer work.
+7877 [ZAP-daemon] INFO  org.zaproxy.addon.network.internal.TlsUtils - Using supported SSL/TLS protocols: [TLSv1.2, TLSv1.3]
+8634 [ZAP-daemon] INFO  org.zaproxy.zap.control.ExtensionFactory - Extensions loaded
+10859 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Auto-update Extension - Allows ZAP to check for updates
+10872 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Options Extension - Options Extension
+10875 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Edit Menu Extension - Edit Menu Extension
+10875 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing API Extension - Provides a rest based API for controlling and accessing ZAP
+10945 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing History Extension - History Extension
+10947 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionReveal - Show hidden fields and enable disabled fields
+10949 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Search Extension - Search messages for strings and regular expressions
+10951 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Breakpoint Extension - Allows you to intercept and modify requests and responses
+10957 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Extension - Passive scanner
+11109 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Script Passive Scan Rules
+11111 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Stats Passive Scan Rule
+11111 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: WSDL File Detection
+11114 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Authentication Request Identified
+11114 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session Management Response Identified
+11115 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Verification Request Identified
+11115 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Anti-clickjacking Header
+11115 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Application Error Disclosure
+11115 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Big Redirect Detected (Potential Sensitive Information Leak)
+11116 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Re-examine Cache-control Directives
+11116 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Charset Mismatch
+11116 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content Security Policy (CSP) Header Not Set
+11124 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: CSP
+11124 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Content-Type Header Missing
+11125 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie No HttpOnly Flag
+11125 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Loosely Scoped Cookie
+11125 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie without SameSite Attribute
+11126 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Without Secure Flag
+11126 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain Misconfiguration
+11127 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cross-Domain JavaScript Source File Inclusion
+11127 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Absence of Anti-CSRF Tokens
+11127 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Directory Browsing
+11128 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Hash Disclosure
+11129 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Heartbleed OpenSSL Vulnerability (Indicative)
+11129 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Private IP Disclosure
+11130 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Session ID in URL Rewrite
+11131 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Debug Error Messages
+11131 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in URL
+11132 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Sensitive Information in HTTP Referrer Header
+11132 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Information Disclosure - Suspicious Comments
+11133 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Weak Authentication Method
+11133 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP to HTTPS Insecure Transition in Form Post
+11133 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTPS to HTTP Insecure Transition in Form Post
+11134 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Insecure JSF ViewState
+11134 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Reverse Tabnabbing
+11134 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Secure Pages Include Mixed Content
+11135 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Modern Web Application
+11136 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: PII Disclosure11136 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Retrieved from Cache
+11136 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: HTTP Server Response Header
+11139 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Strict-Transport-Security Header
+11141 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Timestamp Disclosure
+11141 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable Charset
+11141 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Cookie Poisoning
+11142 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable HTML Element Attribute (Potential XSS)
+11142 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: User Controllable JavaScript Event (XSS)
+11143 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Open Redirect
+11144 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Username Hash Found
+11144 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Viewstate
+11149 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-AspNet-Version Response Header
+11150 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Backend-Server Header Information Leak
+11150 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-ChromeLogger-Data (XCOLD) Header Information Leak
+11151 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Content-Type-Options Header Missing
+11151 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: X-Debug-Token Information Leak
+11152 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+11152 [ZAP-daemon] INFO  org.zaproxy.zap.extension.pscan.ExtensionPassiveScan - loaded passive scan rule: Vulnerable JS Library (Powered by Retire.js)
+11187 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alerts Extension - Allows you to view and manage alerts
+11190 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Extension - Active scanner, heavily based on the original Paros active scanner, but with additional tests added
+11203 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Standard Menus Extension - A set of common popup menus for miscellaneous tasks
+11204 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionBruteForce - Forced browsing of files and directories using code from the OWASP DirBuster tool
+11209 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Compare Extension - Compares 2 sessions and generates an HTML file showing the differences
+11209 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionInvoke - Invoke external applications passing context related information such as URLs and parameters
+11210 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Anti-CSRF Extension - Handles anti cross site request forgery (CSRF) tokens
+11220 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Extension - Authentication Extension
+11239 [ZAP-daemon] INFO  org.zaproxy.zap.extension.authentication.ExtensionAuthentication - Loaded authentication method types: [Form-based Authentication, HTTP/NTLM Authentication, Manual Authentication, Script-based Authentication, JSON-based Authentication]
+11243 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Log4j Extension - Logs errors to the Output tab in development mode only
+11248 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Users Extension - Users Extension11252 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Parameters Extension - Summarise and analyse FORM and URL parameters as well as cookies
+11256 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Script Extension - Script integration
+11267 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionScripts - Scripting console, supports all JSR 223 scripting languages
+11294 [ZAP-daemon] WARN  org.parosproxy.paros.common.AbstractParam - Failed to create enum for 'script.console.defaultScriptChangedBehaviour' using 'Ask Each Time'. Valid values: [Keep Script, Replace Script, Ask Each Time]
+11294 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Forced User Extension - Forced User Extension
+11295 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Sessions Extension - Extension handling HTTP sessions
+11302 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionZest - Zest is a specialized scripting language, originally, from Mozilla specifically designed to be used in security tools
+11521 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDiff - ExtensionDiff
+11522 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Post Table View Extension - HTTP Panel Post Table View Extension
+11522 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Encoder Addon - Adds support for scriptable encoders to ZAP.
+11523 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Session Management Extension - Session Management Extension
+11530 [ZAP-daemon] INFO  org.zaproxy.zap.extension.sessions.ExtensionSessionManagement - Loaded session management method types: [Cookie-based Session Management, HTTP Authentication Session Management, Script-based Session Management]
+11533 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Form Table View Extension - HTTP Panel Form Table View Extension
+11537 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSockets Support - Capture messages from WebSockets with the ability to set breakpoints.
+11568 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP/WSDL Support - Allows you to import a WSDL file containing operations which ZAP will access, adding them to the Sites tree.
+11577 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Core UI Extension - Core UI related functionality.
+11577 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authorization Extension - Authorization Extension
+11578 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Requester - Allows to manually edit and send messages.
+11580 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider - AJAX Spider, uses Crawljax
+11588 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebDriver Provider - Provides WebDrivers to control several browsers using Selenium and includes HtmlUnit browser.
+11598 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Refresh Sites Tree Extension - Adds menu item to refresh the Sites tree
+11600 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Help Extension - ZAP User Guide
+11601 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Call Home - Handles all of the calls to ZAP services
+11607 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Network Extension - Provides core networking capabilities.
+12318 [ZAP-daemon] INFO  org.zaproxy.addon.network.ConnectionOptions - Unsafe SSL/TLS renegotiation disabled.
+12320 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Extension Configuration Extension - Allows you to configure which extensions are loaded when ZAP starts
+12321 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Combined HTTP Panels Extension - Combined HTTP Panels Extension
+12321 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Hex View Extension - HTTP Panel Hex View Extension
+12325 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Image View Extension - HTTP Panel Image View Extension
+12325 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Query Table View Extension - HTTP Panel Query Table View Extension
+12325 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Panel Syntax Highlighter View Extension - HTTP Panel Syntax Highlighter View Extension
+12326 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Keyboard Configuration Extension - Adds support for configurable keyboard shortcuts for all of the ZAP menus.
+12326 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scanner Rule Configuration Extension - Active and passive rule configuration
+12329 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Statistics Extension - Statistics12336 [ZAP-daemon] INFO  org.zaproxy.zap.extension.stats.ExtensionStats - Start recording in memory stats
+12338 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Custom Pages Extension - Custom Pages Definition
+12338 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Advance Fuzzer - Provides the foundation for concrete message types (for example, HTTP, WebSockets) expose fuzzer implementations.
+12339 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing HTTP Fuzzer - Allows to fuzz HTTP messages.
+12340 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUD - Heads Up Display
+12846 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionHUDlaunch - ExtensionHUDlaunch
+12847 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Retest - Facilitates the verification of presence/absence of certain alerts.
+12848 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generator - Templated and themed report generation functionality
+12855 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Report Generation Automation Integration - Report Generation Automation Integration
+12863 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Out-of-band Application Security Testing - Adds Out-of-band Application Security Testing functionality.
+12873 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OAST Scripts - Adds OAST scripts.12877 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Automation - SOAP Automation Framework Integration
+12884 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing SOAP Spider - SOAP Spider Integration
+12885 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Match and Replace - Easy way to replace strings in requests and responses
+12897 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Replacer Automation - Replacer Automation Framework Integration
+12899 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionTipsAndTricks - Tips and Tricks
+12899 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Extension - Spider used for automatically finding URIs on a site.
+12948 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Spider Automation - Spider Automation Integration
+12951 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionFormHandler - This extension allows a user to change the default values used for generated content (e.g. spiders, importers).
+12958 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Fuzzer - Allows to fuzz WebSocket messages.
+12959 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing WebSocket Message Editor - Provides the WebSocket Message Editor dialogues.
+12959 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Authentication Helper - Authentication Helper
+12968 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing AJAX Spider Browser Based Authentication Support - Enables browser based authentication when performing an authenticated AJAX Spider scan.
+12969 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start panel  - Adds the Quick Start panel for scanning and exploring applications
+12971 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Ajax Spider integration - Add the option to use the Ajax Spider in the Quick Start scan
+12972 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start HUD Integration - HUD integration for the quick start panel
+12972 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Browser Launcher - Launch browsers preset proxying through ZAP
+12973 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Quick Start Spider Integration - Adds the option to use the traditional Spider in the Quick Start scan.
+12974 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionOnlineMenu - The Online menu links
+12974 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Active Scan Rules - Release status active scan rules
+12975 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Passive Scan Rules - Release status passive scan rules
+12976 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionDomXSS - DOM XSS Active Scan Rule
+13125 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGettingStarted - The ZAP Getting Started Guide
+13128 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraalVM JavaScript Engine Extension - Provides the GraalVM JavaScript engine for ZAP scripting.
+13659 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Postman Import - Allows you to spider and import Postman collections
+13662 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Ajax Spider Automation - Ajax Spider Automation Framework Integration
+13672 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export - Import and Export functionality supporting multiple formats.
+13677 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Import/Export Automation - Import/Export Automation Framework Integration
+13679 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Scripts Automation Framework Integration - Scripts Automation
+13695 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library - A library of shared functionality
+13700 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Common Library Form Handler - Common Library Form Handler Integration
+13701 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionGraphQl - Allows you to inspect and attack GraphQL endpoints.
+13713 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Automation - GraphQL Automation Framework Integration
+13717 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing GraphQL Spider - GraphQL Spider Integration
+13718 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Automation Framework - Provides functionality to simplify using ZAP in an automated manner
+13721 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing ExtensionAlertFilters - Context alert rules filter
+13724 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing Alert Filters Automation - Alert Filters Automation Framework Integration
+13726 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Import - Allows you to spider and import OpenAPI (Swagger) definitions
+13736 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Automation - OpenAPI Automation Framework Integration
+13738 [ZAP-daemon] INFO  org.parosproxy.paros.extension.ExtensionLoader - Initializing OpenAPI Spider - OpenAPI Spider Integration
+15394 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter - Flyway Community Edition 9.20.0 by Redgate
+15400 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter - See release notes here: https://rd.gt/416ObMi
+15401 [ZAP-daemon] INFO  org.flywaydb.core.internal.license.VersionPrinter -
+15440 [ZAP-daemon] INFO  org.flywaydb.core.internal.database.base.BaseDatabaseType - Database: jdbc:hsqldb:file:/root/.ZAP/db/permanent (HSQL Database Engine 2.7)
+15451 [ZAP-daemon] WARN  org.flywaydb.core.internal.database.base.Database - Flyway upgrade recommended: HSQLDB 2.7 is newer than this version of Flyway and support has not been tested. The latest supported version of HSQLDB is 2.6.
+15515 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.044s)
+15551 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Current version of schema "PUBLIC": 1
+15557 [ZAP-daemon] INFO  org.flywaydb.core.internal.command.DbMigrate - Schema "PUBLIC" is up to date. No migration necessary.
+15697 [ZAP-daemon] INFO  org.zaproxy.addon.oast.services.callback.CallbackService - Started callback service on 0.0.0.0:46267
+15853 [ZAP-daemon] INFO  org.zaproxy.addon.network.ExtensionNetwork - ZAP is now listening on localhost:8080
+^Croot@grafana:/usr/bin/usr/bin/owasp-zap -cmd -quickurl http://example.com/ -quickprogress -quickout /var/log/report.json^C
+root@grafana:/usr/bin# chmod 755 /var/log/report.json
+root@grafana:/usr/bin# ls -l /var/log/report.json
+-rwxr-xr-x 1 root root 10478 nov 23 16:52 /var/log/report.json
+root@grafana:/usr/bin# nano /var/log/report.json
+root@grafana:/usr/bin# /usr/bin/owasp-zap -cmd -quickurl http://example.com/ -quickprogress -quickout /var/log/report.json
+Found Java version 21.0.1
+Available memory: 1899 MB
+Using JVM args: -Xmx474m
+Accessing URL
+Using traditional spider
+Active scanning
+[====================] 100%
+Attack complete
+Writing results to /var/log/report.json
+root@grafana:/usr/bin# cat /var/log/report.json
+{
+        "@programName": "ZAP",
+        "@version": "2.14.0",
+        "@generated": "Thu, 23 Nov 2023 20:27:30",
+        "site":[
+                {
+                        "@name": "http://example.com",
+                        "@host": "example.com",
+                        "@port": "80",
+                        "@ssl": "false",
+                        "alerts": [
+                                {
+                                        "pluginid": "10038",
+                                        "alertRef": "10038-1",
+                                        "alert": "Content Security Policy (CSP) Header Not Set",
+                                        "name": "Content Security Policy (CSP) Header Not Set",
+                                        "riskcode": "2",
+                                        "confidence": "3",
+                                        "riskdesc": "Medium (High)",
+                                        "desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10020",
+                                        "alertRef": "10020-1",
+                                        "alert": "Missing Anti-clickjacking Header",
+                                        "name": "Missing Anti-clickjacking Header",
+                                        "riskcode": "2",
+                                        "confidence": "2",
+                                        "riskdesc": "Medium (Medium)",
+                                        "desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-frame-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+                                        "cweid": "1021",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10036",
+                                        "alertRef": "10036",
+                                        "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "name": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+                                        "riskcode": "1",
+                                        "confidence": "3",
+                                        "riskdesc": "Low (High)",
+                                        "desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9A9D)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9A9E)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9B13)",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "ECS (mic/9A89)",
+                                                        "otherinfo": ""
+                                                }
+                                        ],
+                                        "count": "4",
+                                        "solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+                                        "cweid": "200",
+                                        "wascid": "13",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10021",
+                                        "alertRef": "10021",
+                                        "alert": "X-Content-Type-Options Header Missing",
+                                        "name": "X-Content-Type-Options Header Missing",
+                                        "riskcode": "1",
+                                        "confidence": "2",
+                                        "riskdesc": "Low (Medium)",
+                                        "desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "x-content-type-options",
+                                                        "attack": "",
+                                                        "evidence": "",
+                                                        "otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+                                                }
+                                        ],
+                                        "count": "1",
+                                        "solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+                                        "otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+                                        "reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+                                        "cweid": "693",
+                                        "wascid": "15",
+                                        "sourceid": "1"
+                                },
+                                {
+                                        "pluginid": "10050",
+                                        "alertRef": "10050",
+                                        "alert": "Retrieved from Cache",
+                                        "name": "Retrieved from Cache",
+                                        "riskcode": "0",
+                                        "confidence": "2",
+                                        "riskdesc": "Informational (Medium)",
+                                        "desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. </p>",
+                                        "instances":[
+                                                {
+                                                        "uri": "http://example.com/",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "HIT",
+                                                        "otherinfo": ""
+                                                },
+                                                {
+                                                        "uri": "http://example.com/robots.txt",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 565399",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                },
+                                                {
+                                                        "uri": "http://example.com/sitemap.xml",
+                                                        "method": "GET",
+                                                        "param": "",
+                                                        "attack": "",
+                                                        "evidence": "Age: 521319",
+                                                        "otherinfo": "The presence of the 'Age' header indicates that that a HTTP/1.1 compliant caching server is in use."
+                                                }
+                                        ],
+                                        "count": "3",
+                                        "solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+                                        "otherinfo": "",
+                                        "reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+                                        "cweid": "-1",
+                                        "wascid": "-1",
+                                        "sourceid": "1"
+                                }
+                        ]
+                }
+        ]
 }
